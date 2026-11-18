@@ -1,4 +1,5 @@
-import { SectionList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { Alert, StyleSheet, Text, View, SectionList, TouchableOpacity } from 'react-native';
 
 const datasource = [
   {
@@ -8,8 +9,8 @@ const datasource = [
       { key: 'i' },
       { key: 'o' },
     ],
-    title: 'Vowels',
-    bgcolor: 'skyblue',
+    title: "Vowels",
+    bgcolor: "skyblue",
   },
   {
     data: [
@@ -29,17 +30,43 @@ const datasource = [
       { key: 'r' },
       { key: 's' },
     ],
-    title: 'Consonants',
-    bgcolor: 'khaki',
-  },
+    title: "Consonants",
+    bgcolor: "khaki",
+  }
 ];
+
+export default function App() {
+  const renderItem = ({ item, index, section }) => (
+    <TouchableOpacity
+      style={styles.opacityStyle}
+      onPress={() => Alert.alert(section.title + ' ' + item.key + ' selected!')}
+    >
+      <Text style={styles.textStyle}>{index + 1}. {section.title} {item.key}</Text>
+    </TouchableOpacity>
+  );
+
+  return (
+    <View style={styles.container}>
+      <Text style={{ fontSize: 30, marginBottom: 20, textAlign: 'center' }}>Lesson 09 Exercise2</Text>
+      <SectionList
+        contentContainerStyle={{ padding: 10 }}
+        sections={datasource}
+        renderItem={renderItem}
+        renderSectionHeader={({ section: { title, bgcolor } }) => (
+          <Text style={[styles.headerText, { backgroundColor: bgcolor }]}>{title}</Text>
+        )}
+      />
+      <StatusBar style="auto" />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
-    marginBottom: 30,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
+    paddingTop: 60,
+    paddingBottom: 30,
   },
   opacityStyle: {
     borderWidth: 1,
@@ -56,28 +83,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-const renderItem = ({ item }) => {
-  return (
-    <TouchableOpacity style={styles.opacityStyle}>
-      <Text style={styles.textStyle}>{item.key}</Text>
-    </TouchableOpacity>
-  );
-};
-
-export default function Exercise2() {
-  return (
-    <View style={styles.container}>
-      <SectionList
-        contentContainerStyle={{ padding: 10 }}
-        sections={datasource}
-        renderItem={renderItem}
-        renderSectionHeader={({ section: { title, bgcolor } }) => (
-          <Text style={[styles.headerText, { backgroundColor: bgcolor }]}>
-            {title}
-          </Text>
-        )}
-      />
-    </View>
-  );
-}

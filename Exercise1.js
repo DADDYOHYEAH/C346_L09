@@ -1,63 +1,72 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 
 const datasource = [
-  { key: 'a' },
-  { key: 'b' },
+  { key: 'a' }, 
+  { key: 'b' }, 
   { key: 'c' },
-  { key: 'd' },
-  { key: 'e' },
+  { key: 'd' }, 
+  { key: 'e' }, 
   { key: 'f' },
   { key: 'g' },
-  { key: 'h' },
-  { key: 'i' },
+  { key: 'h' }, 
+  { key: 'i' }, 
   { key: 'j' },
   { key: 'k' },
-  { key: 'l' },
-  { key: 'm' },
+  { key: 'l' }, 
+  { key: 'm' }, 
   { key: 'n' },
-  { key: 'o' },
-  { key: 'p' },
+  { key: 'o' }, 
+  { key: 'p' }, 
   { key: 'q' },
   { key: 'r' },
   { key: 's' },
-  { key: 't' },
-  { key: 'u' },
+  { key: 't' }, 
+  { key: 'u' }, 
   { key: 'v' },
   { key: 'w' },
-  { key: 'x' },
-  { key: 'y' },
+  { key: 'x' }, 
+  { key: 'y' }, 
   { key: 'z' },
 ];
+
+const renderItem = ({ item }) => (
+  <TouchableOpacity style={styles.opacityStyle}>
+    <Text style={styles.textStyle}>{item.key}</Text>
+  </TouchableOpacity>
+);
+
+export default function App() {
+
+
+  return (
+    <View style={styles.container}>
+      <Text style={{ fontSize: 30, marginBottom: 20 }}>L09 Exercises 1</Text>
+      <FlatList 
+        data={datasource}
+        renderItem={renderItem}
+      />
+      <StatusBar style="auto" />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
-    marginBottom: 30,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    paddingTop: 60,
   },
   opacityStyle: {
     borderWidth: 1,
+    marginVertical: 5,
+    borderRadius: 5,
   },
   textStyle: {
-    fontSize: 15,
+    fontSize: 15, 
     margin: 10,
     textAlign: 'left',
-  },
+  }
 });
-
-const renderItem = ({ item }) => {
-  return (
-    <TouchableOpacity style={styles.opacityStyle}>
-      <Text style={styles.textStyle}>{item.key}</Text>
-    </TouchableOpacity>
-  );
-};
-
-export default function Exercise1() {
-  return (
-    <View style={styles.container}>
-      <FlatList data={datasource} renderItem={renderItem} />
-    </View>
-  );
-}

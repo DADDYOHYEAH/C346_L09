@@ -14,14 +14,7 @@ npm install
 npm run android
 ```
 
-`App.js` contains Exercise 1 and runs on its own. To run Exercise 2, copy the contents of `Exercise2.js` into `App.js`.
-
-## Check
-
-```sh
-npx expo lint
-npx tsc --noEmit
-```
+`index.js` opens `App.js`, which contains the same code as `Exercise2.js`. Tap a row to show the selected section and letter. To run Exercise 1, copy the contents of `Exercise1.js` into `App.js`.
 
 ## Submission
 
