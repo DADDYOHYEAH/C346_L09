@@ -14,7 +14,7 @@ npm install
 npm run android
 ```
 
-`App.js` opens Exercise 2. To run Exercise 1, replace both occurrences of `Exercise2` in `App.js` with `Exercise1`.
+`App.js` contains Exercise 1 and runs on its own. To run Exercise 2, copy the contents of `Exercise2.js` into `App.js`.
 
 ## Check
 
